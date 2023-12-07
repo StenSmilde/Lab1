@@ -78,6 +78,11 @@ class Ui_VotingMenu(object):
         self.lineEdit = QtWidgets.QLineEdit(parent=self.Parties)
         self.lineEdit.setGeometry(QtCore.QRect(430, 240, 113, 22))
         self.lineEdit.setObjectName("lineEdit")
+        self.label_3 = QtWidgets.QLabel(parent=self.Parties)
+        self.label_3.setGeometry(QtCore.QRect(100, 265, 400, 40))
+        self.label_3.setText("")
+        self.label_3.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_3.setObjectName("label_3")
         self.pushButton = QtWidgets.QPushButton(parent=self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(50, 470, 120, 40))
         self.pushButton.setObjectName("pushButton")
@@ -101,7 +106,7 @@ class Ui_VotingMenu(object):
 
     def retranslateUi(self, VotingMenu):
         _translate = QtCore.QCoreApplication.translate
-        VotingMenu.setWindowTitle(_translate("VotingMenu", "MainWindow"))
+        VotingMenu.setWindowTitle(_translate("VotingMenu", "VotingMenu"))
         self.label.setText(_translate("VotingMenu", "<html><head/><body><p><span style=\" font-size:16pt;\">Voting Menu Dutch Parlement</span></p></body></html>"))
         self.radioButton.setText(_translate("VotingMenu", "PVV"))
         self.radioButton_2.setText(_translate("VotingMenu", "GLPVDA"))
@@ -118,7 +123,7 @@ class Ui_VotingMenu(object):
         self.radioButton_13.setText(_translate("VotingMenu", "DENK"))
         self.radioButton_14.setText(_translate("VotingMenu", "VOLT"))
         self.radioButton_15.setText(_translate("VotingMenu", "JA21"))
-        self.label_2.setText(_translate("VotingMenu", "<html><head/><body><p><span style=\" font-size:10pt;\">Multiplier:</span></p></body></html>"))
+        self.label_2.setText(_translate("VotingMenu", "<html><head/><body><p><span style=\" font-size:10pt;\">Amount of votes:</span></p></body></html>"))
         self.pushButton.setText(_translate("VotingMenu", "Vote"))
         self.pushButton_2.setText(_translate("VotingMenu", "Clear"))
         self.pushButton_3.setText(_translate("VotingMenu", "View Parlement"))
