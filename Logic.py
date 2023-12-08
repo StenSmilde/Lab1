@@ -26,8 +26,10 @@ class Logic(QMainWindow, Ui_VotingMenu):
         """
         try:
             multiplier = int(self.lineEdit.text())  # amount of votes
+            if multiplier < 0:  # only number of votes > 0 are allowed
+                raise ValueError
         except ValueError:
-            self.label_3.setText(f'Multiplier should be an integer')
+            self.label_3.setText(f'Multiplier should be an integer.')
         else:
             with open('results.csv', 'r+', newline='') as csv_file:
                 content = list(csv.reader(csv_file, delimiter=","))
