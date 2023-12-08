@@ -2,6 +2,7 @@ from PyQt6.QtWidgets import *
 from Gui import *
 import csv
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 class Logic(QMainWindow, Ui_VotingMenu):
@@ -52,6 +53,7 @@ class Logic(QMainWindow, Ui_VotingMenu):
                 elif self.radioButton_15.isChecked():
                     content[1][14] = str(float(content[1][14]) + multiplier)
 
+                self.label_3.setText(f'')
                 data = csv.writer(csv_file)
                 data.writerows(content)  # write the entire modified content back to the file
 
@@ -63,6 +65,37 @@ class Logic(QMainWindow, Ui_VotingMenu):
             row_two = np.zeros(15)
             content.writerow(row_one)
             content.writerow(row_two)
+            self.lineEdit.setText(f'')
+            self.radioButton.setChecked(True)
+            self.label_3.setText(f'Results are cleared.')
 
     def view_parlement(self):
-        self.close()
+        # data
+        with open('results.csv', 'r', newline='') as csv_file:
+            content = list(csv.reader(csv_file, delimiter=","))
+            parties = content[0][:]
+            votes = content[1][:]
+            vote_list = []
+            data = 0
+            for i in range(len(votes)):
+                data += float(votes[i])
+                vote_list.append(float(votes[i]))
+            try:
+                1 / data
+            except ZeroDivisionError:
+                self.label_3.setText(f'Vote at least once to show results.')
+            else:
+                self.close()
+                # append data and assign color
+                parties.append("")
+                vote_list.append(data)  # 50% blank
+                colors = ['cyan', 'darkred', 'slateblue', 'gold', 'mediumaquamarine', 'yellowgreen', 'darkolivegreen', 'red',
+                          'darkturquoise', 'wheat', 'mediumorchid', 'darkorange', 'dodgerblue', 'palevioletred', 'darkblue',
+                          'white']
+                fig = plt.figure(figsize=(10, 8), dpi=100)
+                ax = fig.add_subplot(1, 1, 1)
+                ax.pie(vote_list, labels=parties, colors=colors)
+                ax.legend(loc='lower right')
+                ax.set_title("Voting Results")
+                ax.add_artist(plt.Circle((0, 0), 0.2, color='white'))
+                fig.show()
