@@ -10,6 +10,7 @@ def vote_menu():
 
     return option
 
+
 def candidate_menu():
     print(f'--------------------')
     print(f'CANDIDATE MENU')
@@ -20,6 +21,7 @@ def candidate_menu():
     while president != 1 and president != 2:
         president = int(input('Invalid (1/2): '))
     return president
+
 
 def main():
     Jane = 0
@@ -41,5 +43,6 @@ def main():
     print(f'--------------------')
     print(f'John - {John}, Jane - {Jane}, Total - {Total}')
     print(f'--------------------')
+
 
 main()
